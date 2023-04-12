@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour
     public float speed;
     public Team thisTeam;
     protected GameObject attackTarget;
+    protected GameObject collectTarget;
     protected enum Command{Idle, Move, Attack, Collect};
     protected Command currentCommand;
     public int health = 100;
@@ -27,19 +28,19 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var step =  speed * Time.deltaTime;
+        
         switch(currentCommand){
             case Command.Move:
-                if(transform.position != target){
-                    transform.position = Vector3.MoveTowards(transform.position, target, step);
-                }
+                navigateTo(target, 0);
                 break;
             case Command.Attack:
-                if(Vector3.Distance(target, transform.position) > 5){
-                    transform.position = Vector3.MoveTowards(transform.position, target, step);
-                }
-                else{
+                if(!navigateTo(target, 5)){
                     PerformAttack();
+                }
+                break;
+            case Command.Collect:
+                if(!navigateTo(target, 5)){
+                    PerformCollect();
                 }
                 break;
             default:
@@ -56,15 +57,21 @@ public class Unit : MonoBehaviour
 
     }
 
-    public void MoveTo(Vector3 movePos){
+    public void RecieveMoveCommand(Vector3 movePos){
         currentCommand = Command.Move;
         target = new Vector3(movePos.x, transform.position.y, movePos.z);
     }
 
-    public void Attack(GameObject targetUnit){
+    public void RecieveAttackCommand(GameObject targetUnit){
         currentCommand = Command.Attack;
         target = new Vector3(targetUnit.transform.position.x, transform.position.y, targetUnit.transform.position.z);
         attackTarget = targetUnit;
+    }
+    
+    public void RecieveCollectCommand(GameObject targetUnit){
+        currentCommand = Command.Collect;
+        target = new Vector3(targetUnit.transform.position.x, transform.position.y, targetUnit.transform.position.z);
+        collectTarget = targetUnit;
     }
 
     float attackTime = 0.0F;
@@ -86,6 +93,18 @@ public class Unit : MonoBehaviour
         takeDamage = true;
     }
 
+    float interactTime = 0.0F;
+    public void PerformCollect(){
+        interactTime = interactTime + Time.deltaTime;
+        if(collectTarget == null){
+            currentCommand = Command.Idle;
+        }
+        else if(interactTime > Variables.collectRate && collectTarget){
+            collectTarget.GetComponent<Supply>().Collect();
+            interactTime = 0.0F;
+        }
+    }
+
     public void Select(){
         setOutlineColour(Color.yellow);
     }
@@ -97,6 +116,15 @@ public class Unit : MonoBehaviour
     public void setOutlineColour(Color colour){
         var renderer = gameObject.GetComponent<Renderer>();
         renderer.material.SetColor("_OutlineColor", colour);
+    }
+
+    public bool navigateTo(Vector3 destination, int stoppingDistance){
+        var step =  speed * Time.deltaTime;
+        if(Vector3.Distance(destination, transform.position) > stoppingDistance){
+                    transform.position = Vector3.MoveTowards(transform.position, destination, step);
+                    return true;
+        }
+        return false;
     }
 
     float outlineCooldown = 0.0F;

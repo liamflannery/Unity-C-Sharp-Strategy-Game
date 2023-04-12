@@ -54,6 +54,9 @@ public class UnitSelector : MonoBehaviour
                     SelectedUnitsAttack(selectedObject);
                 }
                 break;
+            case "Supply":
+                SelectedUnitsCollect(selectedObject);
+                break;
             default:
                 SelectedUnitsMove(hit.point);
                 break;
@@ -118,13 +121,19 @@ public class UnitSelector : MonoBehaviour
 
     void SelectedUnitsMove(Vector3 movePos){
         foreach(Unit unit in selectedUnits){
-            unit.MoveTo(movePos);
+            unit.RecieveMoveCommand(movePos);
         }
     }
 
-    void SelectedUnitsAttack(GameObject target){
+    void SelectedUnitsAttack(GameObject toAttack){
         foreach(Unit unit in selectedUnits){
-            unit.Attack(target);
+            unit.RecieveAttackCommand(toAttack);
+        }
+    }
+
+    void SelectedUnitsCollect(GameObject toCollect){
+        foreach(Unit unit in selectedUnits){
+            unit.RecieveCollectCommand(toCollect);
         }
     }
 
