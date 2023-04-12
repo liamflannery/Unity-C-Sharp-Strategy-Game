@@ -54,6 +54,9 @@ public class UnitSelector : MonoBehaviour
                     SelectedUnitsAttack(selectedObject);
                 }
                 break;
+            default:
+                SelectedUnitsMove(hit.point);
+                break;
                 
         }
         
@@ -107,7 +110,9 @@ public class UnitSelector : MonoBehaviour
     void SelectAll(){
         var foundUnits = FindObjectsOfType<MonoBehaviour>().OfType<Unit>();
         foreach(Unit unit in foundUnits){
-            SelectUnit(unit);
+            if(unit.getTeam() == Team.Player){
+                SelectUnit(unit);
+            }
         }
     }
 
