@@ -8,7 +8,10 @@ public class GroundUnit : Unit
    
     // Start is called before the first frame update
     void Awake(){
-        maxHealth = 100;
+        maxHealth = Variables.groundUnitHealth;
+        strength = Variables.groundUnitStrength;
+        attackRate = Variables.groundUnitAttackRate;
+        speed = Variables.groundUnitSpeed;
     }
     
 
