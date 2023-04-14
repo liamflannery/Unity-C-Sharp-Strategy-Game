@@ -5,8 +5,11 @@ using static Variables;
 
 public class GroundUnit : Unit
 {
-    
+   
     // Start is called before the first frame update
+    void Awake(){
+        maxHealth = 100;
+    }
     
 
     

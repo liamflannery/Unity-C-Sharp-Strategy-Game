@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Variables;
 
-public class Unit : MonoBehaviour
+public class Unit : HasHealth
 {
     
     protected Vector3 target; 
@@ -13,13 +13,13 @@ public class Unit : MonoBehaviour
     protected GameObject collectTarget;
     protected enum Command{Idle, Move, Attack, Collect};
     protected Command currentCommand;
-    public int health = 100;
     public int strength = 10;
     public int attackRate = 2;
+    
     bool takeDamage = false;
     void Start()
     {
-        
+        base.Start();
         target = transform.position;
 
     }
@@ -28,7 +28,7 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        base.Update();
         switch(currentCommand){
             case Command.Move:
                 navigateTo(target, 0);
@@ -48,9 +48,7 @@ public class Unit : MonoBehaviour
             
 
         }
-        if(health <= 0){
-            Destroy(gameObject);
-        }
+
         if(takeDamage){
             resetOutlineColour();
         }
@@ -88,7 +86,7 @@ public class Unit : MonoBehaviour
 
     public void RecieveAttack(int damage){
         Debug.Log("Recieve Attack");
-        health -= damage;
+        currentHealth -= damage;
         setOutlineColour(Color.red);
         takeDamage = true;
     }
