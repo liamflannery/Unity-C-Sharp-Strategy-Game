@@ -31,7 +31,6 @@ public class UnitSelector : MonoBehaviour
             Selector();
         }
         if(Input.GetButton("Fire1")){
-            Debug.Log("select all");
             SelectAll();
         }
     }

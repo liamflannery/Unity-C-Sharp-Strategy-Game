@@ -63,14 +63,18 @@ public class Unit : HasHealth
         if(takeDamage){
             resetOutlineColour();
         }
+        if(currentCommand != Command.Attack && attackIcon.activeSelf){
+            attackIcon.SetActive(false);
+        }
+        if(currentCommand != Command.Collect && collectIcon.activeSelf){
+            collectIcon.SetActive(false);
+        }
 
     }
 
     public void RecieveMoveCommand(Vector3 movePos){
         currentCommand = Command.Move;
         target = new Vector3(movePos.x, transform.position.y, movePos.z);
-        attackIcon.SetActive(false);
-        collectIcon.SetActive(false);
     }
 
     public void RecieveAttackCommand(GameObject targetUnit){
@@ -96,7 +100,6 @@ public class Unit : HasHealth
     public void PerformAttack(){
         attackTime = attackTime + Time.deltaTime;
         if(attackTarget == null){
-            attackIcon.SetActive(false);
             currentCommand = Command.Idle;
         }
         else if(attackTime > attackRate && attackTarget){
@@ -109,7 +112,6 @@ public class Unit : HasHealth
     public void PerformCollect(){
         interactTime = interactTime + Time.deltaTime;
         if(collectTarget == null){
-            collectIcon.SetActive(false);
             currentCommand = Command.Idle;
         }
         else if(interactTime > Variables.collectRate && collectTarget){
@@ -134,8 +136,8 @@ public class Unit : HasHealth
     public bool navigateTo(Vector3 destination, int stoppingDistance){
         var step =  speed * Time.deltaTime;
         if(Vector3.Distance(destination, transform.position) > stoppingDistance){
-                    transform.position = Vector3.MoveTowards(transform.position, destination, step);
-                    return true;
+            transform.position = Vector3.MoveTowards(transform.position, destination, step);
+            return true;
         }
         return false;
     }
