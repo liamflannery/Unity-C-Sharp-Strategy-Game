@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static Variables;
 
 public class Unit : HasHealth
@@ -30,6 +31,9 @@ public class Unit : HasHealth
         attackIcon.SetActive(false);
         collectIcon.SetActive(false);
         target = transform.position;
+        navAgent = GetComponent<NavMeshAgent>();
+        navAgent.speed = speed;
+        navAgent.angularSpeed = Variables.navigationAngularSpeed;
 
     }
 
@@ -40,16 +44,16 @@ public class Unit : HasHealth
         base.Update();
         switch(currentCommand){
             case Command.Move:
-                navigateTo(target, 0);
+                navigateTo(target, 1);
                 break;
             case Command.Attack:
-                if(!navigateTo(target, 5)){
+                if(!navigateTo(target, 4)){
                     attackIcon.SetActive(true);
                     PerformAttack();
                 }
                 break;
             case Command.Collect:
-                if(!navigateTo(target, 5)){
+                if(!navigateTo(target, 4)){
                     collectIcon.SetActive(true);
                     PerformCollect();
                 }
@@ -132,11 +136,17 @@ public class Unit : HasHealth
         renderer.material.SetColor("_OutlineColor", colour);
     }
 
+    NavMeshAgent navAgent; 
     public bool navigateTo(Vector3 destination, int stoppingDistance){
         var step =  speed * Time.deltaTime;
         if(Vector3.Distance(destination, transform.position) > stoppingDistance){
-            transform.position = Vector3.MoveTowards(transform.position, destination, step);
+            if(navAgent.destination != destination){
+                navAgent.SetDestination(destination);
+            }
             return true;
+        }
+        else{
+            navAgent.SetDestination(transform.position);
         }
         return false;
     }
