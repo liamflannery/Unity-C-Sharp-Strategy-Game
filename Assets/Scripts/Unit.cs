@@ -90,7 +90,6 @@ public class Unit : HasHealth
     }
 
     public void RecieveAttack(int damage){
-        Debug.Log("Recieve Attack");
         currentHealth -= damage;
         setOutlineColour(Color.red);
         takeDamage = true;

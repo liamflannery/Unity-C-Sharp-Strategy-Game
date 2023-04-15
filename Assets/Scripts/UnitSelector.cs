@@ -22,12 +22,16 @@ public class UnitSelector : MonoBehaviour
     }
 
     // Update is called once per frame
+    double mouseDownTime;
     void Update()
     {
         if(Input.GetMouseButtonDown(1)){
             Action();
         }
         if(Input.GetMouseButtonDown(0)){
+            mouseDownTime = Time.fixedUnscaledTimeAsDouble;
+        }
+        if(Input.GetMouseButtonUp(0) && (Time.fixedUnscaledTimeAsDouble - mouseDownTime  <= 0.5)){
             Selector();
         }
         if(Input.GetButton("Fire1")){
