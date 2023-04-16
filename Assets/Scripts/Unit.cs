@@ -12,8 +12,8 @@ public class Unit : HasHealth
     public Team thisTeam;
     protected GameObject attackTarget;
     protected GameObject collectTarget;
-    protected enum Command{Idle, Move, Attack, Collect};
-    protected Command currentCommand;
+    public enum Command{Idle, Move, Attack, Collect};
+    public Command currentCommand;
     public int strength;
     public static int attackRate;
     GameObject iconCanvas;
@@ -39,7 +39,7 @@ public class Unit : HasHealth
 
     
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         base.Update();
         switch(currentCommand){
@@ -91,6 +91,12 @@ public class Unit : HasHealth
         currentCommand = Command.Collect;
         target = new Vector3(targetUnit.transform.position.x, transform.position.y, targetUnit.transform.position.z);
         collectTarget = targetUnit;
+    }
+
+    public void RecieveIdleCommand(){
+        currentCommand = Command.Idle;
+        target = gameObject.transform.position;
+        navigateTo(target, 0);
     }
 
     public void RecieveAttack(int damage){

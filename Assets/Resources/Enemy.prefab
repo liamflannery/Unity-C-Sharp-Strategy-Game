@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 7680145353875932456}
   - component: {fileID: 707390343}
   - component: {fileID: 7638003643541860724}
-  - component: {fileID: 8775205805967691546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -137,17 +136,5 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   speed: 0
   thisTeam: 0
+  currentCommand: 0
   strength: 0
---- !u!135 &8775205805967691546
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7680145353875932458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3.87
-  m_Center: {x: 0, y: 0, z: 0}

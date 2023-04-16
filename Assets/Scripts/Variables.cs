@@ -24,6 +24,6 @@ public static class Variables{
     public static int baseAIHealth = 100;
     public static int baseAIStrength = 10;
     public static int baseAIAttackRate = 2; 
-    public static int baseAISpeed = 5;
-    public static int baseAISense = 6;
+    public static int baseAISpeed = 1;
+    public static int baseAISense = 10;
 }

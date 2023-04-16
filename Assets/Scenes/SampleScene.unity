@@ -707,7 +707,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 95
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1021,10 +1021,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnit
       objectReference: {fileID: 0}
-    - target: {fileID: 8300064796935936416, guid: b1580a9beddb446368f8c486d1c434a4, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1580a9beddb446368f8c486d1c434a4, type: 3}
 --- !u!1001 &7680145354310659755
@@ -1044,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680145353875932461, guid: b27f4472465544b108280076aff8f47f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.4
+      value: 28.99
       objectReference: {fileID: 0}
     - target: {fileID: 7680145353875932461, guid: b27f4472465544b108280076aff8f47f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1052,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680145353875932461, guid: b27f4472465544b108280076aff8f47f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 7680145353875932461, guid: b27f4472465544b108280076aff8f47f, type: 3}
       propertyPath: m_LocalRotation.w

@@ -5,29 +5,36 @@ using UnityEngine;
 public class BaseAIUnit : Unit
 {
     // Start is called before the first frame update
+    int sense = Variables.baseAISense;
     void Awake(){
         maxHealth = Variables.baseAIHealth;
         strength = Variables.baseAIStrength;
         attackRate = Variables.baseAIAttackRate;
         speed = Variables.baseAISpeed;
         thisTeam = Variables.Team.AI;
-        GetComponent<SphereCollider>().radius = Variables.baseAISense;
     }
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         base.Update();
+        DetectUnits();
         
     }
 
-    private void OnTriggerEnter(Collider unitCollider){
-        // if(unitCollider.gameObject.tag == "Unit"){
-        //     Unit unit = unitCollider.gameObject.GetComponent<Unit>();
-        //     if(unit.getTeam() == Variables.Team.Player){
-        //         RecieveAttackCommand(unitCollider.gameObject);
-        //     }
-        //     Debug.Log("enter");
-        // }
-        
+
+
+    void DetectUnits(){
+        int layerMask = 1 << 3;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, sense, layerMask);
+        if(colliders.Length == 0){
+            RecieveIdleCommand();
+        }
+        for(int i = 0; i < colliders.Length; i++){
+            if(colliders[i].gameObject.GetComponent<Unit>().getTeam() == Variables.Team.Player){
+                RecieveAttackCommand(colliders[i].gameObject);
+                break;
+            }
+        }
+
     }
 }
