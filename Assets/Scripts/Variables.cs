@@ -9,7 +9,7 @@ public static class Variables{
 
     //GENERAL
     public static int collectRate = 1;
-    public static int navigationAngularSpeed = 1000;
+    public static int navigationAngularSpeed = 0;
     
     
     //~~~~~~~~~~~~Player Units~~~~~~~~~~~~~~~//

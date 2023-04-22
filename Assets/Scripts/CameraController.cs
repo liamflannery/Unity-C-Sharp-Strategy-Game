@@ -38,12 +38,14 @@ public class CameraController : MonoBehaviour
     Vector3 cameraMove;
     bool drag = false;
     public int dragSpeed;
+    
     void MoveHandler(){
        if(Input.GetMouseButton(0)){
             difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
             if(!drag){
                 drag = true;
                 mouseOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
             }
        }
        else{
