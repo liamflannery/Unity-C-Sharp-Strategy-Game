@@ -11,12 +11,11 @@ public class UnitSelector : MonoBehaviour
     Camera cam;
     Vector3 point = new Vector3();
     List<Unit> selectedUnits = new List<Unit>();
-    public GameObject groundUnitObj;
-    Unit groundUnit;
+  
+
     // Start is called before the first frame update
     void Start()
     {
-        groundUnit = groundUnitObj.GetComponent<Unit>();
         cam = gameObject.GetComponent<Camera>();
         //selectedUnits.Add(groundUnit);
     }

@@ -20,6 +20,9 @@ public class Unit : HasHealth
     GameObject attackIcon;
     GameObject collectIcon;
     bool takeDamage = false;
+    public Color hurtColour;
+    public Color selectedColour;
+    protected int angularSpeed = Variables.navigationAngularSpeed;
     void Start()
     {
         base.Start();
@@ -33,7 +36,7 @@ public class Unit : HasHealth
         target = transform.position;
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.speed = speed;
-        navAgent.angularSpeed = Variables.navigationAngularSpeed;
+        navAgent.angularSpeed = angularSpeed;
 
     }
 
@@ -101,7 +104,7 @@ public class Unit : HasHealth
 
     public void RecieveAttack(int damage){
         currentHealth -= damage;
-        setOutlineColour(Color.red);
+        setOutlineColour(hurtColour);
         takeDamage = true;
     }
 
@@ -130,7 +133,7 @@ public class Unit : HasHealth
     }
 
     public void Select(){
-        setOutlineColour(Color.yellow);
+        setOutlineColour(selectedColour);
     }
 
     public void Unselect(){
@@ -138,8 +141,26 @@ public class Unit : HasHealth
     }
 
     public void setOutlineColour(Color colour){
-        var renderer = gameObject.GetComponent<Renderer>();
-        renderer.material.SetColor("_OutlineColor", colour);
+        
+        if(gameObject.GetComponent<Renderer>()){
+            setRendererOutline(gameObject, colour);
+        }
+        else{
+            if(transform.childCount > 0){
+                for(int i = 0; i < transform.childCount; i++){
+                    if(transform.GetChild(i).GetComponent<Renderer>()){
+                        Debug.Log("checking: " + transform.GetChild(i).gameObject);
+                        setRendererOutline(transform.GetChild(i).gameObject, colour);
+                    }
+                }
+            }
+        }
+        
+    }
+
+    public void setRendererOutline(GameObject toSet, Color colour){
+            var renderer = toSet.GetComponent<Renderer>();
+            renderer.material.SetColor("_OutlineColor", colour);
     }
 
     NavMeshAgent navAgent; 
