@@ -289,7 +289,7 @@ Transform:
   - {fileID: 4098316291061982975}
   - {fileID: 1644609426932632121}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &4392154926862699926
 NavMeshAgent:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3761967865013636762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 772670d0f02734ea3982442d5945e7b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a814362bb63d4c1fba1f6eafc6364ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
@@ -330,7 +330,8 @@ MonoBehaviour:
   thisTeam: 0
   currentCommand: 0
   strength: 0
-  testColor: {r: 0, g: 0, b: 0, a: 0}
+  hurtColour: {r: 1, g: 0, b: 0, a: 1}
+  selectedColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!65 &3333488411279622158
 BoxCollider:
   m_ObjectHideFlags: 0

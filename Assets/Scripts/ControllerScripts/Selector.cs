@@ -17,7 +17,7 @@ public class Selector : MonoBehaviour
     void Start()
     {
         cam = gameObject.GetComponent<Camera>();
-        //selectedUnits.Add(groundUnit);
+        //selectedUnits.Add(humanPlatoon);
     }
 
     // Update is called once per frame

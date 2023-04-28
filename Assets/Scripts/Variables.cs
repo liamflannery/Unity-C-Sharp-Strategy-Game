@@ -14,10 +14,11 @@ public static class Variables{
     
     //~~~~~~~~~~~~Player Units~~~~~~~~~~~~~~~//
     //GROUND UNIT
-    public static int groundUnitHealth = 100;
-    public static int groundUnitStrength = 10;
-    public static int groundUnitAttackRate = 2; 
-    public static int groundUnitSpeed = 5;
+    public static int humanPlatoonHealth = 100;
+    public static int humanPlatoonStrength = 10;
+    public static int humanPlatoonAttackRate = 2; 
+    public static int humanPlatoonSpeed = 5;
+    public static int humanPlatoonCost = 100;
 
     //~~~~~~~~~~~AI Units~~~~~~~~~~~~~~~~///
     //Base Unit
