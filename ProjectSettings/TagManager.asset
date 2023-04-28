@@ -7,6 +7,7 @@ TagManager:
   - Unit
   - Supply
   - UICamera
+  - Building
   layers:
   - Default
   - TransparentFX

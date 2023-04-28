@@ -16,6 +16,8 @@ public class ResourceManager : MonoBehaviour {
         }
     }
 
+
+
     public int resources = 0;
 
     public void addResources(int amount){

@@ -21,8 +21,8 @@ public static class Variables{
 
     //~~~~~~~~~~~AI Units~~~~~~~~~~~~~~~~///
     //Base Unit
-    public static int baseAIHealth = 100;
-    public static int baseAIStrength = 10;
+    public static int baseAIHealth = 50;
+    public static int baseAIStrength = 5;
     public static int baseAIAttackRate = 2; 
     public static int baseAISpeed = 4;
     public static int baseAISense = 20;
