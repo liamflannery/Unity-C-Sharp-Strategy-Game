@@ -127,7 +127,7 @@ public class Unit : HasHealth
             currentCommand = Command.Idle;
         }
         else if(interactTime > Variables.collectRate && collectTarget){
-            collectTarget.GetComponent<Supply>().Collect();
+            collectTarget.GetComponent<SupplyCrate>().Collect();
             interactTime = 0.0F;
         }
     }

@@ -27,4 +27,14 @@ public static class Variables{
     public static int baseAISpeed = 4;
     public static int baseAISense = 20;
     public static int baseAIAngularSpeed = 1000;
+
+
+    //~~~~~~~~~~Buildings~~~~~~~~~~~~~~~~//
+    //Supply Pad
+    public static int supplyPadCost = 1000;
+    public static int supplyPadRate = 4;
+    public static int supplyPadAmount = 10;
+
+    //Training_Hall
+    public static int trainingHallCost = 1200;
 }

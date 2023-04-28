@@ -32,7 +32,6 @@ public class MenuItem : MonoBehaviour
     void SetImage(){
         Image img = gameObject.GetComponent<Image>();
         Sprite sprite = Resources.Load<Sprite>(imgName);
-        Debug.Log(sprite);
         img.sprite = sprite;
         var imgColor = img.color;
         imgColor.a = alphaValue;

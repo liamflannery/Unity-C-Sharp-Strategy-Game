@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Variables;
 
-public class Supply : HasHealth
+public class SupplyCrate : HasHealth
 {
     void Awake(){
         maxHealth = 100;  

@@ -27,10 +27,11 @@ public class Building : MonoBehaviour
         blankMenuCanvas.SetActive(false);
     }
 
+
     private void SetMenuItems()
     {
         for(int i = 0; i < menuItems.Count; i++){
-            menuItems[i].SetSlot(blankMenu.transform.GetChild(i).gameObject);
+                menuItems[i].SetSlot(blankMenu.transform.GetChild(i).gameObject);            
         }
     }
 

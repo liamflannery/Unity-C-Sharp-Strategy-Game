@@ -6,8 +6,6 @@ public class TrainingHall : Building
 {
     void Awake() {
         menuItems = new List<MenuItem>();
-     
-
     }
     
 }

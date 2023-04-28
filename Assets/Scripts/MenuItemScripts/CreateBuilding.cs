@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 public class CreateBuilding : MenuItem
 {
     protected GameObject buildingToAdd;
-    
+    protected int buildingCost;
     public override void OnClick(){
-        Debug.Log("create building");
-        Instantiate(buildingToAdd, parentBuilding.transform.position, Quaternion.identity);
-        parentBuilding.CloseMenu();
-        parentBuilding.DestroyBuilding();
+        if(ResourceManager.Instance.getResources() >= buildingCost){
+            Instantiate(buildingToAdd, parentBuilding.transform.position, Quaternion.identity);
+            ResourceManager.Instance.removeResources(buildingCost);
+            parentBuilding.CloseMenu();
+            parentBuilding.DestroyBuilding();
+        }
     }
     
 

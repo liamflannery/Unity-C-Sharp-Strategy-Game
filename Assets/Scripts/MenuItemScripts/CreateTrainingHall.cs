@@ -8,6 +8,7 @@ public class CreateTrainingHall : CreateBuilding
     private void Awake() {
         imgName = "TrainingHallImg";
         buildingToAdd = Resources.Load("Training_Hall") as GameObject;
+        buildingCost = Variables.trainingHallCost;
     }
     
     

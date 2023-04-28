@@ -27,4 +27,8 @@ public class ResourceManager : MonoBehaviour {
     public void removeResources(int amount){
         resources -= amount;
     }
+
+    public int getResources(){
+        return resources;
+    }
 }

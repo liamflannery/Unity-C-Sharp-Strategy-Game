@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7905498239499406226}
   - component: {fileID: 3581907383920085637}
   - component: {fileID: 761558695208610730}
+  - component: {fileID: -6901148258837381300}
   m_Layer: 0
   m_Name: Building_Slot
   m_TagString: Building
@@ -121,3 +122,19 @@ MonoBehaviour:
   blankMenuCanvas: {fileID: 0}
   blankMenu: {fileID: 0}
   menuItems: []
+--- !u!208 &-6901148258837381300
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6586110298088549188}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
