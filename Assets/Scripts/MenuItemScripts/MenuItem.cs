@@ -11,14 +11,14 @@ public class MenuItem : MonoBehaviour
 
     void Start(){
         
-        SetImage();
+        SetImage(new Color(1,1,1,alphaValue));
         if(GetComponent<EventTrigger>()){
             SetUpButtonClick();
         }
         
     }
 
-    void Update() {
+    protected void Update() {
         if(Input.GetButtonDown("Cancel")){
             parentBuilding.CloseMenu();
         }
@@ -29,13 +29,11 @@ public class MenuItem : MonoBehaviour
         slot.AddComponent(this.GetType());
     }
 
-    void SetImage(){
+    protected void SetImage(Color inColor){
         Image img = gameObject.GetComponent<Image>();
         Sprite sprite = Resources.Load<Sprite>(imgName);
         img.sprite = sprite;
-        var imgColor = img.color;
-        imgColor.a = alphaValue;
-        img.color = imgColor;
+        img.color = inColor;
     }
    
 

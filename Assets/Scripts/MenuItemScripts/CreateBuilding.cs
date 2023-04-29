@@ -15,6 +15,17 @@ public class CreateBuilding : MenuItem
             parentBuilding.DestroyBuilding();
         }
     }
+
+    public new void Update(){
+        base.Update();
+        if(ResourceManager.Instance.getResources() >= buildingCost){
+            SetImage(new Color(1,1,1, alphaValue));
+        }
+        else{
+            SetImage(new Color(1,1,1, 0.2f));
+        }
+        
+    }
     
 
 }

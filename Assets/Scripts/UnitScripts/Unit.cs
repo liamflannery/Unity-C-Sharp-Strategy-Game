@@ -23,6 +23,7 @@ public class Unit : HasHealth
     public Color hurtColour = Color.red;
     public Color selectedColour = Color.yellow;
     protected int angularSpeed = Variables.navigationAngularSpeed;
+    protected int attackRange;
     new void Start()
     {
         base.Start();
@@ -50,7 +51,7 @@ public class Unit : HasHealth
                 navigateTo(target, 1);
                 break;
             case Command.Attack:
-                if(!navigateTo(target, 4)){
+                if(!navigateTo(target, attackRange)){
                     attackIcon.SetActive(true);
                     PerformAttack();
                 }

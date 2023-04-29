@@ -13,6 +13,7 @@ public class BaseAIUnit : Unit
         speed = Variables.baseAISpeed;
         thisTeam = Variables.Team.AI;
         angularSpeed = Variables.baseAIAngularSpeed;
+        attackRange = Variables.baseAIAttackRange;
     }
     // Update is called once per frame
     protected override void Update()

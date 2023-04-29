@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SupplyPad : Building
 {
-    int rate;
+    float rate;
     int amount;
     void Awake() {
         menuItems = new List<MenuItem>();

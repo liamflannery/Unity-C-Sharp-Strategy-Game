@@ -12,6 +12,7 @@ public class HumanPlatoon : Unit
         strength = Variables.humanPlatoonStrength;
         attackRate = Variables.humanPlatoonAttackRate;
         speed = Variables.humanPlatoonSpeed;
+        attackRange = Variables.humanPlatoonAttackRange;
     }
     
 
