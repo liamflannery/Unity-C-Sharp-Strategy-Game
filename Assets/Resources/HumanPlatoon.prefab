@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 4392154926862699926}
   - component: {fileID: 4055775996508735236}
   - component: {fileID: 3333488411279622158}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: HumanPlatoon
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ Transform:
   - {fileID: 4098316291061982975}
   - {fileID: 1644609426932632121}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &4392154926862699926
 NavMeshAgent:
@@ -326,12 +326,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  speed: 0
-  thisTeam: 0
-  currentCommand: 0
-  strength: 0
   hurtColour: {r: 1, g: 0, b: 0, a: 1}
   selectedColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  thisTeam: 0
 --- !u!65 &3333488411279622158
 BoxCollider:
   m_ObjectHideFlags: 0

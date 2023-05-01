@@ -13,6 +13,7 @@ public class HumanPlatoon : Unit
         attackRate = Variables.humanPlatoonAttackRate;
         speed = Variables.humanPlatoonSpeed;
         attackRange = Variables.humanPlatoonAttackRange;
+        sense = attackRange;
     }
     
 

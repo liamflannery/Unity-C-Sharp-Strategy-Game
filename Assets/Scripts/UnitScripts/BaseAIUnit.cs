@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseAIUnit : Unit
 {
     // Start is called before the first frame update
-    int sense = Variables.baseAISense;
+
     void Awake(){
         maxHealth = Variables.baseAIHealth;
         strength = Variables.baseAIStrength;
@@ -14,6 +14,7 @@ public class BaseAIUnit : Unit
         thisTeam = Variables.Team.AI;
         angularSpeed = Variables.baseAIAngularSpeed;
         attackRange = Variables.baseAIAttackRange;
+        sense = Variables.baseAISense;
     }
     // Update is called once per frame
     protected override void Update()
@@ -26,14 +27,15 @@ public class BaseAIUnit : Unit
 
 
     void DetectUnits(){
-        int layerMask = 1 << 3;
+        int layerMask = 1 << 7;
         Collider[] colliders = Physics.OverlapSphere(transform.position, sense, layerMask);
         if(colliders.Length == 0){
             RecieveIdleCommand();
         }
         for(int i = 0; i < colliders.Length; i++){
             if(colliders[i].gameObject.GetComponent<Unit>().getTeam() == Variables.Team.Player){
-                RecieveAttackCommand(colliders[i].gameObject);
+                Debug.Log("moving to target");
+                RecieveMoveCommand(colliders[i].gameObject.transform.position);
                 break;
             }
         }
